@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Shell Shockers Cherry Blossom Theme
 // @namespace    shellshockers.cherryblossomtheme.clean
-// @version      2.1
+// @version      2.1.1
 // @author       Virojet
 // @icon         data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzIgMzIpIj48ZyBpZD0icCI+PHBhdGggZD0iTTAtNEMtOS04LTEzLTIwLTgtMjctNS0zMC0yLTI4IDAtMjQgMi0yOCA1LTMwIDgtMjcgMTMtMjAgOS04IDAtNFoiIGZpbGw9IiNmN2E4YzgiIHN0cm9rZT0iI2EyNGQ4MCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHBhdGggZD0iTTAtOFYtMjAiIHN0cm9rZT0iI2U1N2FhOCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48L2c+PHVzZSBocmVmPSIjcCIgdHJhbnNmb3JtPSJyb3RhdGUoNzIpIi8+PHVzZSBocmVmPSIjcCIgdHJhbnNmb3JtPSJyb3RhdGUoMTQ0KSIvPjx1c2UgaHJlZj0iI3AiIHRyYW5zZm9ybT0icm90YXRlKDIxNikiLz48dXNlIGhyZWY9IiNwIiB0cmFuc2Zvcm09InJvdGF0ZSgyODgpIi8+PGNpcmNsZSByPSI2IiBmaWxsPSIjZmZkMTY2IiBzdHJva2U9IiNhMjRkODAiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=
 // @license      MIT
-// @description  Cherry blossom theme. Cosmetic only: no account or network code.
+// @description  Cherry blossom theme. Cosmetic only: no account code, and the only request is one anonymous install count.
 // @homepageURL  https://github.com/Virojet/Shell-Shockers-Cherry-Blossom-Theme
 // @supportURL   https://github.com/Virojet/Shell-Shockers-Cherry-Blossom-Theme/issues
 // @downloadURL  https://raw.githubusercontent.com/Virojet/Shell-Shockers-Cherry-Blossom-Theme/main/Shell-Shockers-Cherry-Blossom.user.js
@@ -73,4 +73,18 @@
     document.addEventListener("pointerlockchange", () => { petals.hidden = !!document.pointerLockElement; });
   };
   document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", start, { once: true }) : start();
+
+  // install-counter:begin
+  // Install counter: one anonymous hit per browser, sent once and never again (key "ssCherryBlossom-install-counted").
+  // Nothing is sent but the hit itself: no settings, names or IDs. Total: abacus.jasoncameron.dev/get/virojet-cherry-blossom/installs
+  (() => {
+    const KEY = "ssCherryBlossom-install-counted";
+    try { if (localStorage.getItem(KEY)) return; } catch (e) { return; }
+    setTimeout(() => {
+      fetch("https://abacus.jasoncameron.dev/hit/virojet-cherry-blossom/installs", { credentials: "omit", referrerPolicy: "no-referrer" })
+        .then(r => { if (r.ok) localStorage.setItem(KEY, "1"); })
+        .catch(() => { });
+    }, 8000);
+  })();
+  // install-counter:end
 })();

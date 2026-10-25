@@ -10,8 +10,9 @@
 
 [![Install Cherry Blossom Theme](https://img.shields.io/badge/Install_Cherry_Blossom-one_click-e57aa8?style=for-the-badge&logo=tampermonkey&logoColor=white)](https://raw.githubusercontent.com/Virojet/Shell-Shockers-Cherry-Blossom-Theme/main/Shell-Shockers-Cherry-Blossom.user.js)
 
-[![Version](https://img.shields.io/badge/version-2.1-a24d80?style=flat-square)](./Shell-Shockers-Cherry-Blossom.user.js)
+[![Version](https://img.shields.io/badge/version-2.1.1-a24d80?style=flat-square)](./Shell-Shockers-Cherry-Blossom.user.js)
 [![License: MIT](https://img.shields.io/badge/license-MIT-lightgrey?style=flat-square)](./LICENSE)
+[![Installs](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fabacus.jasoncameron.dev%2Fget%2Fvirojet-cherry-blossom%2Finstalls&query=%24.value&label=installs&color=2ea44f&style=flat-square)](#privacy)
 
 </div>
 
@@ -34,7 +35,11 @@
 - **Petals fall** gently across the screen. They hide while you're aiming in a match, so they never get in your way.
 - **Team colors stay the same**, so you can still tell teams apart.
 
-It's cosmetic only: it adds a stylesheet and the falling petals, and has no account or network code. It **updates by itself** through Tampermonkey. To turn it off, switch it off in Tampermonkey and reload the game.
+It's cosmetic only: it adds a stylesheet and the falling petals, and has no account code. The only request it makes is the anonymous install count described under [Privacy](#privacy). It **updates by itself** through Tampermonkey. To turn it off, switch it off in Tampermonkey and reload the game.
+
+## Privacy
+
+- **Install count:** the first time it runs, one anonymous hit goes to a public counter ([Abacus](https://abacus.jasoncameron.dev)) so the installs badge above stays current. No settings, names or IDs. It's sent once per browser; the `ssCherryBlossom-install-counted` key in site storage remembers it.
 
 ## License
 
